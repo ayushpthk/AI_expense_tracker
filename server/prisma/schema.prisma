@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            Int      @id @default(autoincrement())
+  name          String
+  email         String   @unique
+  password      String
+  createdAt     DateTime @default(now())
+  monthlyBudget Float    @default(15000)
+
+  expenses Expense[]
+}
+
+model Expense {
+  id       Int      @id @default(autoincrement())
+  title    String
+  amount   Float
+  category String
+  date     DateTime @default(now())
+  notes    String?
+
+  userId Int
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  splits ExpenseSplit[]
+}
+
+model ExpenseSplit {
+  id         Int     @id @default(autoincrement())
+  expenseId  Int
+  personName String
+  amount     Float
+  isPaid     Boolean @default(false)
+
+  expense Expense @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+}

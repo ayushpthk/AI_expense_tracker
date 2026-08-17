@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN     "monthlyBudget" DOUBLE PRECISION NOT NULL DEFAULT 15000;
