@@ -31,7 +31,7 @@ function Settings() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/expenses",
+        "https://ai-expense-tracker-s5m6.onrender.com/api/expenses",
         {
           method: "DELETE",
           headers: {

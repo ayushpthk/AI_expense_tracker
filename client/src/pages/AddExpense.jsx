@@ -107,8 +107,8 @@ function AddExpense() {
       const token = localStorage.getItem("token");
 
       const url = isEditing
-        ? `http://localhost:5000/api/expenses/${editingExpense.id}`
-        : "http://localhost:5000/api/expenses";
+        ? `https://ai-expense-tracker-s5m6.onrender.com/api/expenses/${editingExpense.id}`
+        : "https://ai-expense-tracker-s5m6.onrender.com/api/expenses";
 
       const method = isEditing ? "PUT" : "POST";
 

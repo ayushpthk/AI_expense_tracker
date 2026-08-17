@@ -96,7 +96,7 @@ function Dashboard() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-          "http://localhost:5000/api/expenses",
+          "https://ai-expense-tracker-s5m6.onrender.com/api/expenses",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -129,7 +129,7 @@ function Dashboard() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-          "http://localhost:5000/api/budget",
+          "https://ai-expense-tracker-s5m6.onrender.com/api/budget",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -185,7 +185,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/budget",
+        "https://ai-expense-tracker-s5m6.onrender.com/api/budget",
         {
           method: "PUT",
           headers: {

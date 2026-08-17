@@ -25,7 +25,7 @@ function Expenses() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-          "http://localhost:5000/api/expenses",
+          "https://ai-expense-tracker-s5m6.onrender.com/api/expenses",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -120,7 +120,7 @@ function Expenses() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/api/expenses/${expenseId}`,
+        `https://ai-expense-tracker-s5m6.onrender.com/api/expenses/${expenseId}`,
         {
           method: "DELETE",
           headers: {
@@ -159,7 +159,7 @@ function Expenses() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/api/expenses/split/${splitId}/toggle-paid`,
+        `https://ai-expense-tracker-s5m6.onrender.com/api/expenses/split/${splitId}/toggle-paid`,
         {
           method: "PUT",
           headers: {
