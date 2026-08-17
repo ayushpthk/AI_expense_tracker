@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import AddExpense from "./pages/AddExpense";
 import Expenses from "./pages/Expenses";
 import Settings from "./pages/Settings";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           path="/login"
           element={<Login />}
         />
-
+        <Route path="/register" element={<Register />} />
         <Route
           path="/dashboard"
           element={<Dashboard />}

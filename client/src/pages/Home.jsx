@@ -1,6 +1,8 @@
 import "../App.css";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <div className="app">
 
@@ -11,11 +13,17 @@ function Home() {
         </div>
 
         <div className="nav-buttons">
-          <button className="login-btn">
+          <button
+            className="login-btn"
+            onClick={() => navigate("/login")}
+          >
             Login
           </button>
 
-          <button className="signup-btn">
+          <button
+            className="signup-btn"
+            onClick={() => navigate("/register")}
+          >
             Get Started
           </button>
         </div>
@@ -42,7 +50,10 @@ function Home() {
 
           <div className="hero-buttons">
 
-            <button className="primary-btn">
+            <button
+              className="primary-btn"
+              onClick={() => navigate("/register")}
+            >
               Get Started →
             </button>
 
