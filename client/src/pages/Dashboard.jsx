@@ -231,7 +231,7 @@ function Dashboard() {
           </div>
 
           <span>
-            ExpenseTracker <b>AI</b>
+            SmartSpend 
           </span>
         </div>
 
