@@ -319,23 +319,19 @@ function Dashboard() {
 
           </div>
 
-          <div className="summary-card">
-
+          <div className="summary-card monthly-budget-card">
             <div className="summary-icon">
               <Target size={21} />
             </div>
 
             <div className="budget-title-row">
-
               <span>Monthly Budget</span>
-
               <button
                 className="edit-budget-btn"
                 onClick={handleEditBudget}
               >
                 Edit
               </button>
-
             </div>
 
             <h2>
@@ -344,30 +340,23 @@ function Dashboard() {
                 : `₹${monthlyBudget.toLocaleString("en-IN")}`}
             </h2>
 
-            <p>
-              ₹{Math.max(remainingBudget, 0).toLocaleString("en-IN")} remaining
-            </p>
+            <p>Your monthly spending limit</p>
+
             {isEditingBudget && (
               <div className="budget-edit-form">
-
                 <input
                   type="number"
                   min="0"
                   step="100"
                   value={budgetInput}
-                  onChange={(e) =>
-                    setBudgetInput(e.target.value)
-                  }
+                  onChange={(e) => setBudgetInput(e.target.value)}
                   placeholder="Enter monthly budget"
                 />
 
                 <div className="budget-edit-actions">
-
                   <button
                     className="budget-cancel-btn"
-                    onClick={() =>
-                      setIsEditingBudget(false)
-                    }
+                    onClick={() => setIsEditingBudget(false)}
                     disabled={savingBudget}
                   >
                     Cancel
@@ -378,17 +367,78 @@ function Dashboard() {
                     onClick={handleSaveBudget}
                     disabled={savingBudget}
                   >
-                    {savingBudget
-                      ? "Saving..."
-                      : "Save"}
+                    {savingBudget ? "Saving..." : "Save"}
                   </button>
-
                 </div>
-
               </div>
             )}
-
           </div>
+
+          <div className="summary-card remaining-budget-card">
+            <div className="remaining-budget-top">
+              <div className="remaining-budget-icon">
+                <Wallet size={22} />
+              </div>
+              <span>Remaining Budget</span>
+            </div>
+
+            <h2>
+              {budgetLoading
+                ? "Loading..."
+                : `₹${Math.max(remainingBudget, 0).toLocaleString("en-IN")}`}
+            </h2>
+
+            <p>
+              {remainingBudget < 0
+                ? `₹${Math.abs(remainingBudget).toLocaleString("en-IN")} over budget`
+                : "Available to spend this month"}
+            </p>
+
+            <div
+              className="remaining-budget-track"
+              role="progressbar"
+              aria-label="Monthly budget remaining"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={
+                monthlyBudget > 0
+                  ? Math.round(
+                    (Math.max(remainingBudget, 0) / monthlyBudget) * 100
+                  )
+                  : 0
+              }
+            >
+              <div
+                className="remaining-budget-fill"
+                style={{
+                  width: `${monthlyBudget > 0
+                    ? Math.min(
+                      Math.max((remainingBudget / monthlyBudget) * 100, 0),
+                      100
+                    )
+                    : 0
+                    }%`,
+                }}
+              />
+            </div>
+
+            <div className="remaining-budget-foot">
+              <span>
+                {monthlyBudget > 0
+                  ? `${Math.round(
+                    (Math.min(Math.max(remainingBudget, 0), monthlyBudget) /
+                      monthlyBudget) *
+                    100
+                  )}% left`
+                  : "No budget set"}
+              </span>
+
+              <span>
+                Budget: ₹{monthlyBudget.toLocaleString("en-IN")}
+              </span>
+            </div>
+          </div>
+
 
           {/* Money Owed */}
 
